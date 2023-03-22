@@ -1,0 +1,599 @@
+Started GET "/" for ::1 at 2023-03-21 17:28:24 +0300
+  [1m[35m (275.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (365.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 3 pending migrations:
+
+20230319205543_create_pizzas.rb
+20230319205808_create_restaurants.rb
+20230319212757_create_restaurant_pizzas.rb
+
+
+):
+  
+activerecord (7.0.4.3) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.4.3) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.4.3) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.4.3) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.4.3) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.4.3) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.6.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.6.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePizzas (20230319205543)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "pizzas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "ingredients" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230319205543"]]
+  [1m[36mTRANSACTION (174.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRestaurants (20230319205808)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230319205808"]]
+  [1m[36mTRANSACTION (104.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRestaurantPizzas (20230319212757)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "restaurant_pizzas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "price" integer, "restaurant_id" integer NOT NULL, "pizza_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f279821f06"
+FOREIGN KEY ("restaurant_id")
+  REFERENCES "restaurants" ("id")
+, CONSTRAINT "fk_rails_ab3bb148dc"
+FOREIGN KEY ("pizza_id")
+  REFERENCES "pizzas" ("id")
+)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_restaurant_pizzas_on_restaurant_id" ON "restaurant_pizzas" ("restaurant_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_restaurant_pizzas_on_pizza_id" ON "restaurant_pizzas" ("pizza_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230319212757"]]
+  [1m[36mTRANSACTION (136.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-03-21 14:29:19.236907"], ["updated_at", "2023-03-21 14:29:19.236907"]]
+  [1m[36mTRANSACTION (71.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-03-21 17:29:32 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as */*
+  Rendering /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.5ms | Allocations: 705)
+Completed 200 OK in 21ms (Views: 12.5ms | ActiveRecord: 0.0ms | Allocations: 3355)
+
+
+Started GET "/" for ::1 at 2023-03-21 17:30:02 +0300
+Processing by Rails::WelcomeController#index as */*
+  Rendering /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.8ms | Allocations: 449)
+Completed 200 OK in 12ms (Views: 7.6ms | ActiveRecord: 0.0ms | Allocations: 1174)
+
+
+Started GET "/" for 127.0.0.1 at 2023-03-21 17:31:40 +0300
+Processing by Rails::WelcomeController#index as */*
+  Rendering /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.6ms | Allocations: 16)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 198)
+
+
+Started GET "/" for 127.0.0.1 at 2023-03-21 17:32:11 +0300
+Processing by Rails::WelcomeController#index as */*
+  Rendering /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | Allocations: 16)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms | Allocations: 197)
+
+
+Started GET "/" for 127.0.0.1 at 2023-03-21 17:32:11 +0300
+Processing by Rails::WelcomeController#index as */*
+  Rendering /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | Allocations: 16)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 194)
+
+
+Started GET "/%201" for 127.0.0.1 at 2023-03-22 08:18:15 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/%201"):
+  
+Started GET "/index" for 127.0.0.1 at 2023-03-22 08:18:36 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/index"):
+  
+Started GET "/" for 127.0.0.1 at 2023-03-22 08:18:40 +0300
+Processing by Rails::WelcomeController#index as */*
+  Rendering /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 123.0ms | Allocations: 705)
+Completed 200 OK in 175ms (Views: 138.3ms | ActiveRecord: 0.0ms | Allocations: 3358)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."name" = ? LIMIT ?[0m  [["name", "Pizza Palace"], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."address" = ? LIMIT ?[0m  [["address", "Nairobi"], ["LIMIT", 1]]
+  [1m[36mRestaurant Create (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Pizza Palace"], ["address", "Nairobi"], ["created_at", "2023-03-22 05:39:15.274932"], ["updated_at", "2023-03-22 05:39:15.274932"]]
+  [1m[36mTRANSACTION (1360.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."name" = ? LIMIT ?[0m  [["name", "Italian Kitchen"], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."address" = ? LIMIT ?[0m  [["address", "Westlands"], ["LIMIT", 1]]
+  [1m[36mRestaurant Create (0.9ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Italian Kitchen"], ["address", "Westlands"], ["created_at", "2023-03-22 05:39:16.655762"], ["updated_at", "2023-03-22 05:39:16.655762"]]
+  [1m[36mTRANSACTION (889.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."name" = ? LIMIT ?[0m  [["name", "Italian Kitchen"], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."address" = ? LIMIT ?[0m  [["address", "Kasarani"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPizza Create (0.4ms)[0m  [1m[32mINSERT INTO "pizzas" ("name", "ingredients", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Margherita"], ["ingredients", "Tomato, Mozzarella, Basil"], ["created_at", "2023-03-22 05:39:17.588849"], ["updated_at", "2023-03-22 05:39:17.588849"]]
+  [1m[36mTRANSACTION (1258.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPizza Create (0.9ms)[0m  [1m[32mINSERT INTO "pizzas" ("name", "ingredients", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Pepperoni"], ["ingredients", "Tomato, Mozzarella, Pepperoni"], ["created_at", "2023-03-22 05:39:18.852830"], ["updated_at", "2023-03-22 05:39:18.852830"]]
+  [1m[36mTRANSACTION (1100.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPizza Create (0.3ms)[0m  [1m[32mINSERT INTO "pizzas" ("name", "ingredients", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Hawaiian"], ["ingredients", "Tomato, Mozzarella, Ham, Pineapple"], ["created_at", "2023-03-22 05:39:19.963145"], ["updated_at", "2023-03-22 05:39:19.963145"]]
+  [1m[36mTRANSACTION (1053.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPizza Load (0.4ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurantPizza Create (1.4ms)[0m  [1m[32mINSERT INTO "restaurant_pizzas" ("price", "restaurant_id", "pizza_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["price", 25], ["restaurant_id", 1], ["pizza_id", 1], ["created_at", "2023-03-22 05:39:22.392758"], ["updated_at", "2023-03-22 05:39:22.392758"]]
+  [1m[36mTRANSACTION (943.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRestaurantPizza Create (0.8ms)[0m  [1m[32mINSERT INTO "restaurant_pizzas" ("price", "restaurant_id", "pizza_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["price", 30], ["restaurant_id", 2], ["pizza_id", 2], ["created_at", "2023-03-22 05:39:23.355991"], ["updated_at", "2023-03-22 05:39:23.355991"]]
+  [1m[36mTRANSACTION (629.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/" for 127.0.0.1 at 2023-03-22 08:46:20 +0300
+Processing by Rails::WelcomeController#index as */*
+  Rendering /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1792.2ms | Allocations: 454)
+Completed 200 OK in 8816ms (Views: 6483.2ms | Allocations: 1194)
+
+
+Started GET "/" for 127.0.0.1 at 2023-03-22 08:50:57 +0300
+Processing by Rails::WelcomeController#index as */*
+  Rendering /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 9.0ms | Allocations: 16)
+Completed 200 OK in 68ms (Views: 54.3ms | Allocations: 198)
+
+
+Started GET "/" for 127.0.0.1 at 2023-03-22 08:51:35 +0300
+Processing by Rails::WelcomeController#index as */*
+  Rendering /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 92.7ms | Allocations: 16)
+Completed 200 OK in 216ms (Views: 210.6ms | Allocations: 197)
+
+
+Started GET "/1" for 127.0.0.1 at 2023-03-22 08:51:45 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/1"):
+  
+Started GET "/" for 127.0.0.1 at 2023-03-22 08:52:00 +0300
+Processing by Rails::WelcomeController#index as */*
+  Rendering /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 46.4ms | Allocations: 15)
+Completed 200 OK in 106ms (Views: 93.1ms | Allocations: 193)
+
+
+Started GET "/" for 127.0.0.1 at 2023-03-22 09:45:10 +0300
+Processing by Rails::WelcomeController#index as */*
+  Rendering /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 13.4ms | Allocations: 15)
+Completed 200 OK in 18ms (Views: 17.3ms | Allocations: 193)
+
+
+Started GET "/" for 127.0.0.1 at 2023-03-22 09:51:10 +0300
+Processing by Rails::WelcomeController#index as */*
+  Rendering /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/alex/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 50.9ms | Allocations: 15)
+Completed 200 OK in 53ms (Views: 52.3ms | Allocations: 193)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2023-03-22 09:57:16 +0300
+Processing by RestaurantsController#index as */*
+  [1m[36mRestaurant Load (13.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+Started GET "/restaurants" for 127.0.0.1 at 2023-03-22 09:57:39 +0300
+  ↳ app/controllers/restaurants_controller.rb:6:in `index'
+Processing by RestaurantsController#index as */*
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/controllers/restaurants_controller.rb:6:in `index'
+Completed 200 OK in 4684ms (Views: 4667.9ms | ActiveRecord: 14.7ms | Allocations: 16444)
+
+
+Completed 200 OK in 20894ms (Views: 11227.4ms | ActiveRecord: 510.2ms | Allocations: 21587)
+
+
+Started GET "/restaurants/1" for 127.0.0.1 at 2023-03-22 09:58:21 +0300
+Processing by RestaurantsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (12.6ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:43:in `find_restaurant'
+  [1m[36mPizza Load (6.8ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas" INNER JOIN "restaurant_pizzas" ON "pizzas"."id" = "restaurant_pizzas"."pizza_id" WHERE "restaurant_pizzas"."restaurant_id" = ?[0m  [["restaurant_id", 1]]
+  ↳ app/controllers/restaurants_controller.rb:13:in `show'
+Completed 200 OK in 7630ms (Views: 6501.2ms | ActiveRecord: 22.3ms | Allocations: 29062)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2023-03-22 10:01:43 +0300
+Processing by RestaurantsController#index as */*
+  [1m[36mRestaurant Load (10.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/controllers/restaurants_controller.rb:6:in `index'
+Completed 200 OK in 61ms (Views: 50.0ms | ActiveRecord: 10.2ms | Allocations: 823)
+
+
+Started POST "/restaurants" for 127.0.0.1 at 2023-03-22 10:03:23 +0300
+Processing by RestaurantsController#create as */*
+  Parameters: {"name"=>"Mutana", "addresss"=>"Ukunda", "restaurant"=>{"name"=>"Mutana"}}
+[31mUnpermitted parameters: :addresss, :restaurant. Context: { controller: RestaurantsController, action: create, request: #<ActionDispatch::Request:0x00007fee50028168>, params: {"name"=>"Mutana", "addresss"=>"Ukunda", "controller"=>"restaurants", "action"=>"create", "restaurant"=>{"name"=>"Mutana"}} }[0m
+  [1m[36mTRANSACTION (18.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (37.0ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."name" = ? LIMIT ?[0m  [["name", "Mutana"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."address" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+Completed 201 Created in 2933ms (Views: 32.3ms | ActiveRecord: 56.2ms | Allocations: 3035)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2023-03-22 10:08:40 +0300
+Processing by RestaurantsController#index as */*
+  Parameters: {"name"=>"Mutana", "addresss"=>"Ukunda", "restaurant"=>{"name"=>"Mutana"}}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/controllers/restaurants_controller.rb:6:in `index'
+Completed 200 OK in 47ms (Views: 31.2ms | ActiveRecord: 0.4ms | Allocations: 839)
+
+
+Started POST "/restaurants" for 127.0.0.1 at 2023-03-22 10:10:07 +0300
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "name":"Matanu"
+  "address":"Ukunda"
+}
+Processing by RestaurantsController#create as */*
+Completed 400 Bad Request in 129ms (ActiveRecord: 0.0ms | Allocations: 118)
+
+
+  
+ActionDispatch::Http::Parameters::ParseError (Error occurred while parsing request parameters):
+  
+app/controllers/restaurants_controller.rb:47:in `restaurant_params'
+app/controllers/restaurants_controller.rb:21:in `create'
+Started POST "/restaurants" for 127.0.0.1 at 2023-03-22 10:10:44 +0300
+Processing by RestaurantsController#create as */*
+  Parameters: {"name"=>"Matanu", "address"=>"Ukunda", "restaurant"=>{"name"=>"Matanu", "address"=>"Ukunda"}}
+[31mUnpermitted parameter: :restaurant. Context: { controller: RestaurantsController, action: create, request: #<ActionDispatch::Request:0x00007fee601875f8>, params: {"name"=>"Matanu", "address"=>"Ukunda", "controller"=>"restaurants", "action"=>"create", "restaurant"=>{"name"=>"Matanu", "address"=>"Ukunda"}} }[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."name" = ? LIMIT ?[0m  [["name", "Matanu"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."address" = ? LIMIT ?[0m  [["address", "Ukunda"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Create (0.6ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Matanu"], ["address", "Ukunda"], ["created_at", "2023-03-22 07:10:44.928862"], ["updated_at", "2023-03-22 07:10:44.928862"]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (97.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+Completed 201 Created in 1137ms (Views: 17.8ms | ActiveRecord: 99.1ms | Allocations: 3379)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2023-03-22 10:10:58 +0300
+Processing by RestaurantsController#index as */*
+  Parameters: {"name"=>"Mutana", "addresss"=>"Ukunda", "restaurant"=>{"name"=>"Mutana"}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/controllers/restaurants_controller.rb:6:in `index'
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.2ms | Allocations: 930)
+
+
+Started DELETE "/restaurants/3" for 127.0.0.1 at 2023-03-22 10:11:35 +0300
+Processing by RestaurantsController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:43:in `find_restaurant'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:33:in `destroy'
+  [1m[36mRestaurant Destroy (0.8ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (177.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:33:in `destroy'
+Completed 204 No Content in 395ms (ActiveRecord: 178.4ms | Allocations: 1761)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2023-03-22 10:11:59 +0300
+Processing by RestaurantsController#index as */*
+  Parameters: {"name"=>"Mutana", "addresss"=>"Ukunda", "restaurant"=>{"name"=>"Mutana"}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/controllers/restaurants_controller.rb:6:in `index'
+Completed 200 OK in 99ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 826)
+
+
+Started POST "/restaurants" for 127.0.0.1 at 2023-03-22 10:13:17 +0300
+Processing by RestaurantsController#create as */*
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."address" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+Completed 201 Created in 121ms (Views: 0.6ms | ActiveRecord: 2.6ms | Allocations: 2565)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2023-03-22 10:13:29 +0300
+Processing by RestaurantsController#index as */*
+  [1m[36mRestaurant Load (2.8ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/controllers/restaurants_controller.rb:6:in `index'
+Completed 200 OK in 34ms (Views: 31.1ms | ActiveRecord: 2.8ms | Allocations: 823)
+
+
+Started POST "/restaurants" for 127.0.0.1 at 2023-03-22 10:13:54 +0300
+Processing by RestaurantsController#create as */*
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."address" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+Completed 201 Created in 118ms (Views: 0.4ms | ActiveRecord: 0.8ms | Allocations: 2562)
+
+
+Started POST "/restaurants" for 127.0.0.1 at 2023-03-22 10:14:03 +0300
+Processing by RestaurantsController#create as */*
+  [1m[36mTRANSACTION (16.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."address" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+Completed 201 Created in 56ms (Views: 0.4ms | ActiveRecord: 18.8ms | Allocations: 2564)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2023-03-22 10:14:21 +0300
+Processing by RestaurantsController#index as */*
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/controllers/restaurants_controller.rb:6:in `index'
+Completed 200 OK in 22ms (Views: 22.0ms | ActiveRecord: 0.2ms | Allocations: 823)
+
+
+Started POST "/restaurants" for 127.0.0.1 at 2023-03-22 10:14:41 +0300
+Processing by RestaurantsController#create as */*
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."address" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+Completed 201 Created in 66ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 2572)
+
+
+Started POST "/restaurants" for 127.0.0.1 at 2023-03-22 10:15:03 +0300
+Processing by RestaurantsController#create as */*
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."address" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+Completed 201 Created in 662ms (Views: 0.7ms | ActiveRecord: 1.2ms | Allocations: 2563)
+
+
+Started POST "/restaurants" for 127.0.0.1 at 2023-03-22 10:15:28 +0300
+Processing by RestaurantsController#create as */*
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."address" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+Completed 201 Created in 60ms (Views: 0.4ms | ActiveRecord: 1.5ms | Allocations: 2560)
+
+
+Started POST "/restaurants" for 127.0.0.1 at 2023-03-22 10:16:01 +0300
+Processing by RestaurantsController#create as */*
+  Parameters: {"name"=>"Matanu", "address"=>"Ukunda", "restaurant"=>{"name"=>"Matanu", "address"=>"Ukunda"}}
+[31mUnpermitted parameter: :restaurant. Context: { controller: RestaurantsController, action: create, request: #<ActionDispatch::Request:0x00007fee500347b0>, params: {"name"=>"Matanu", "address"=>"Ukunda", "controller"=>"restaurants", "action"=>"create", "restaurant"=>{"name"=>"Matanu", "address"=>"Ukunda"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."name" = ? LIMIT ?[0m  [["name", "Matanu"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."address" = ? LIMIT ?[0m  [["address", "Ukunda"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Create (1.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Matanu"], ["address", "Ukunda"], ["created_at", "2023-03-22 07:16:01.395652"], ["updated_at", "2023-03-22 07:16:01.395652"]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (124.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+Completed 201 Created in 236ms (Views: 0.7ms | ActiveRecord: 127.0ms | Allocations: 3250)
+
+
+Started POST "/restaurants" for 127.0.0.1 at 2023-03-22 10:16:53 +0300
+Processing by RestaurantsController#create as */*
+  Parameters: {"name"=>"jnmdxs", "address"=>"ghnhbb"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."name" = ? LIMIT ?[0m  [["name", "jnmdxs"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "restaurants" WHERE "restaurants"."address" = ? LIMIT ?[0m  [["address", "ghnhbb"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mRestaurant Create (1.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "jnmdxs"], ["address", "ghnhbb"], ["created_at", "2023-03-22 07:16:54.194183"], ["updated_at", "2023-03-22 07:16:54.194183"]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (91.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+Completed 201 Created in 144ms (Views: 0.4ms | ActiveRecord: 94.5ms | Allocations: 3162)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2023-03-22 10:17:02 +0300
+Processing by RestaurantsController#index as */*
+  Parameters: {"name"=>"jnmdxs", "address"=>"ghnhbb"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/controllers/restaurants_controller.rb:6:in `index'
+Completed 200 OK in 25ms (Views: 23.9ms | ActiveRecord: 0.3ms | Allocations: 1038)
+
+
+Started GET "/restaurants/5" for 127.0.0.1 at 2023-03-22 10:17:34 +0300
+Processing by RestaurantsController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:43:in `find_restaurant'
+  [1m[36mPizza Load (1.0ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas" INNER JOIN "restaurant_pizzas" ON "pizzas"."id" = "restaurant_pizzas"."pizza_id" WHERE "restaurant_pizzas"."restaurant_id" = ?[0m  [["restaurant_id", 5]]
+  ↳ app/controllers/restaurants_controller.rb:13:in `show'
+Completed 200 OK in 41ms (Views: 34.7ms | ActiveRecord: 1.3ms | Allocations: 1476)
+
+
+Started GET "/restaurants_pizza" for 127.0.0.1 at 2023-03-22 10:22:13 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/restaurants_pizza"):
+  
+Started GET "/pizza" for 127.0.0.1 at 2023-03-22 10:22:46 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/pizza"):
+  
+Started GET "/pizzas" for 127.0.0.1 at 2023-03-22 10:23:01 +0300
+Processing by PizzasController#index as */*
+  Parameters: {"name"=>"Mutana", "addresss"=>"Ukunda", "pizza"=>{"name"=>"Mutana"}}
+  [1m[36mPizza Load (0.4ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  ↳ app/controllers/pizzas_controller.rb:5:in `index'
+Completed 200 OK in 18ms (Views: 17.2ms | ActiveRecord: 0.4ms | Allocations: 967)
+
+
+Started GET "/restaurant_pizzas" for 127.0.0.1 at 2023-03-22 10:23:17 +0300
+Processing by RestaurantPizzasController#index as */*
+  Parameters: {"name"=>"Mutana", "addresss"=>"Ukunda", "restaurant_pizza"=>{}}
+  [1m[36mRestaurantPizza Load (0.9ms)[0m  [1m[34mSELECT "restaurant_pizzas".* FROM "restaurant_pizzas"[0m
+  ↳ app/controllers/restaurant_pizzas_controller.rb:6:in `index'
+Completed 200 OK in 354ms (Views: 349.6ms | ActiveRecord: 3.7ms | Allocations: 14895)
+
+
+Started GET "/restaurant_pizzas" for 127.0.0.1 at 2023-03-22 10:45:43 +0300
+Processing by RestaurantPizzasController#index as */*
+  Parameters: {"name"=>"Mutana", "addresss"=>"Ukunda", "restaurant_pizza"=>{}}
+  [1m[36mRestaurantPizza Load (0.2ms)[0m  [1m[34mSELECT "restaurant_pizzas".* FROM "restaurant_pizzas"[0m
+  ↳ app/controllers/restaurant_pizzas_controller.rb:6:in `index'
+Completed 200 OK in 146ms (Views: 144.7ms | ActiveRecord: 1.0ms | Allocations: 953)
+
+
+Started POST "/restaurant_pizzas" for 127.0.0.1 at 2023-03-22 10:51:45 +0300
+Processing by RestaurantPizzasController#create as */*
+  Parameters: {"price"=>22, "restaurant_id"=>5, "pizza_id"=>1, "restaurant_pizza"=>{"price"=>22, "restaurant_id"=>5, "pizza_id"=>1}}
+[31mUnpermitted parameter: :restaurant_pizza. Context: { controller: RestaurantPizzasController, action: create, request: #<ActionDispatch::Request:0x00007fee6418fb28>, params: {"price"=>22, "restaurant_id"=>5, "pizza_id"=>1, "controller"=>"restaurant_pizzas", "action"=>"create", "restaurant_pizza"=>{"price"=>22, "restaurant_id"=>5, "pizza_id"=>1}} }[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurant_pizzas_controller.rb:11:in `create'
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/restaurant_pizzas_controller.rb:11:in `create'
+  [1m[36mPizza Load (10.7ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas" WHERE "pizzas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/restaurant_pizzas_controller.rb:11:in `create'
+  [1m[36mRestaurantPizza Create (25.1ms)[0m  [1m[32mINSERT INTO "restaurant_pizzas" ("price", "restaurant_id", "pizza_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["price", 22], ["restaurant_id", 5], ["pizza_id", 1], ["created_at", "2023-03-22 07:51:46.958505"], ["updated_at", "2023-03-22 07:51:46.958505"]]
+  ↳ app/controllers/restaurant_pizzas_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (187.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurant_pizzas_controller.rb:11:in `create'
+Completed 201 Created in 1474ms (Views: 0.5ms | ActiveRecord: 250.6ms | Allocations: 4776)
+
+
+Started GET "/restaurant_pizzas" for 127.0.0.1 at 2023-03-22 10:51:54 +0300
+Processing by RestaurantPizzasController#index as */*
+  Parameters: {"name"=>"Mutana", "addresss"=>"Ukunda", "restaurant_pizza"=>{}}
+  [1m[36mRestaurantPizza Load (0.3ms)[0m  [1m[34mSELECT "restaurant_pizzas".* FROM "restaurant_pizzas"[0m
+  ↳ app/controllers/restaurant_pizzas_controller.rb:6:in `index'
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.3ms | Allocations: 938)
+
+
+Started DELETE "/restaurant_pizzas/3" for 127.0.0.1 at 2023-03-22 10:54:28 +0300
+Processing by RestaurantPizzasController#destroy as */*
+  Parameters: {"price"=>22, "restaurant_id"=>5, "pizza_id"=>1, "id"=>"3", "restaurant_pizza"=>{"price"=>22, "restaurant_id"=>5, "pizza_id"=>1}}
+  [1m[36mRestaurantPizza Load (0.2ms)[0m  [1m[34mSELECT "restaurant_pizzas".* FROM "restaurant_pizzas" WHERE "restaurant_pizzas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurant_pizzas_controller.rb:32:in `find_restaurant_pizza'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurant_pizzas_controller.rb:22:in `destroy'
+  [1m[36mRestaurantPizza Destroy (0.5ms)[0m  [1m[31mDELETE FROM "restaurant_pizzas" WHERE "restaurant_pizzas"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/restaurant_pizzas_controller.rb:22:in `destroy'
+  [1m[36mTRANSACTION (226.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurant_pizzas_controller.rb:22:in `destroy'
+Completed 204 No Content in 379ms (ActiveRecord: 227.2ms | Allocations: 1853)
+
+
+Started GET "/restaurant_pizzas" for 127.0.0.1 at 2023-03-22 10:54:36 +0300
+Processing by RestaurantPizzasController#index as */*
+  Parameters: {"name"=>"Mutana", "addresss"=>"Ukunda", "restaurant_pizza"=>{}}
+  [1m[36mRestaurantPizza Load (0.3ms)[0m  [1m[34mSELECT "restaurant_pizzas".* FROM "restaurant_pizzas"[0m
+  ↳ app/controllers/restaurant_pizzas_controller.rb:6:in `index'
+Completed 200 OK in 60ms (Views: 53.4ms | ActiveRecord: 0.3ms | Allocations: 812)
+
+
+Started GET "/pizzas" for 127.0.0.1 at 2023-03-22 10:56:22 +0300
+Processing by PizzasController#index as */*
+  Parameters: {"name"=>"Mutana", "address"=>"Ukunda", "pizza"=>{"name"=>"Mutana"}}
+  [1m[36mPizza Load (0.3ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  ↳ app/controllers/pizzas_controller.rb:5:in `index'
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.3ms | Allocations: 958)
+
+
+Started GET "/pizzas" for 127.0.0.1 at 2023-03-22 10:57:52 +0300
+Processing by PizzasController#index as */*
+  Parameters: {"name"=>"hswjsj", "ingredients"=>"Tomato, Basil", "pizza"=>{"name"=>"hswjsj", "ingredients"=>"Tomato, Basil"}}
+  [1m[36mPizza Load (1.0ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  ↳ app/controllers/pizzas_controller.rb:5:in `index'
+Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 1.0ms | Allocations: 933)
+
+
+Started POST "/pizzas" for 127.0.0.1 at 2023-03-22 10:58:09 +0300
+Processing by PizzasController#create as */*
+  Parameters: {"name"=>"hswjsj", "ingredients"=>"Tomato, Basil", "pizza"=>{"name"=>"hswjsj", "ingredients"=>"Tomato, Basil"}}
+[31mUnpermitted parameter: :pizza. Context: { controller: PizzasController, action: create, request: #<ActionDispatch::Request:0x00007fee70198870>, params: {"name"=>"hswjsj", "ingredients"=>"Tomato, Basil", "controller"=>"pizzas", "action"=>"create", "pizza"=>{"name"=>"hswjsj", "ingredients"=>"Tomato, Basil"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pizzas_controller.rb:9:in `create'
+  [1m[36mPizza Create (1.5ms)[0m  [1m[32mINSERT INTO "pizzas" ("name", "ingredients", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "hswjsj"], ["ingredients", "Tomato, Basil"], ["created_at", "2023-03-22 07:58:09.091299"], ["updated_at", "2023-03-22 07:58:09.091299"]]
+  ↳ app/controllers/pizzas_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (90.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pizzas_controller.rb:9:in `create'
+Completed 201 Created in 241ms (Views: 0.9ms | ActiveRecord: 92.2ms | Allocations: 1976)
+
+
+Started GET "/pizzas" for 127.0.0.1 at 2023-03-22 10:58:13 +0300
+Processing by PizzasController#index as */*
+  Parameters: {"name"=>"Mutana", "address"=>"Ukunda", "pizza"=>{"name"=>"Mutana"}}
+  [1m[36mPizza Load (0.2ms)[0m  [1m[34mSELECT "pizzas".* FROM "pizzas"[0m
+  ↳ app/controllers/pizzas_controller.rb:5:in `index'
+Completed 200 OK in 111ms (Views: 109.2ms | ActiveRecord: 0.2ms | Allocations: 1041)
+
+
